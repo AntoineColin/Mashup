@@ -51,6 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BreakableState.cs" />
+     <Compile Include="Assets\Scripts\DamagingZone.cs" />
+     <Compile Include="Assets\Scripts\EnnemyState.cs" />
+     <Compile Include="Assets\Scripts\KidAttack.cs" />
+     <Compile Include="Assets\Scripts\KidMovement.cs" />
+     <Compile Include="Assets\Scripts\KidState.cs" />
+     <Compile Include="Assets\Scripts\LivingState.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -132,6 +139,12 @@
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>D:/ProgramsFiles/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
+ <Reference Include="TextMeshPro-2017.3-Editor">
+ <HintPath>D:/Programmation/Unity/MashupProject/Mashup/MashupJam/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="TextMeshPro-2017.3-Runtime">
+ <HintPath>D:/Programmation/Unity/MashupProject/Mashup/MashupJam/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -143,12 +156,6 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="TextMeshPro-2017.3-Runtime">
- <HintPath>D:/Programmation/Unity/MashupProject/Mashup/MashupJam/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
- </Reference>
- <Reference Include="TextMeshPro-2017.3-Editor">
- <HintPath>D:/Programmation/Unity/MashupProject/Mashup/MashupJam/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
