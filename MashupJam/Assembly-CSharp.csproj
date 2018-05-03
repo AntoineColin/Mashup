@@ -51,13 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BreakableState.cs" />
+     <Compile Include="Assets\Scripts\BreakableHealth.cs" />
      <Compile Include="Assets\Scripts\DamagingZone.cs" />
-     <Compile Include="Assets\Scripts\EnnemyState.cs" />
+     <Compile Include="Assets\Scripts\EnnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Interactable.cs" />
      <Compile Include="Assets\Scripts\KidAttack.cs" />
+     <Compile Include="Assets\Scripts\KidHealth.cs" />
      <Compile Include="Assets\Scripts\KidMovement.cs" />
-     <Compile Include="Assets\Scripts\KidState.cs" />
-     <Compile Include="Assets\Scripts\LivingState.cs" />
+     <Compile Include="Assets\Scripts\LivingHealth.cs" />
+     <Compile Include="Assets\Scripts\Sign.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
