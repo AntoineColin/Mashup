@@ -15,11 +15,11 @@ TagManager:
   - UI
   - 
   - 
-  - Element
+  - Player
   - Decor
-  - Other
-  - 
-  - 
+  - Interactable
+  - Ghost
+  - Ennemy
   - 
   - 
   - 

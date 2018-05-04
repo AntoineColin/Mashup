@@ -8,10 +8,13 @@ public class KidAttack : MonoBehaviour {
 
 	[SerializeField] int damageAtt1;
 	public Collider2D damageZone;
-	LayerMask layerMask = 5<<9;
+	LayerMask layerMask;
 
-	[SerializeField] float interactReach = 3;
+	[SerializeField] float interactReach =0.5f;
 
+	void Start(){
+		layerMask = LayerMask.GetMask ("Interactable");
+	}
 
 	void Update(){
 		if(Input.GetButtonDown ("Fire1")){

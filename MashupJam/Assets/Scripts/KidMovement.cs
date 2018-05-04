@@ -12,13 +12,13 @@ public class KidMovement : MonoBehaviour {
 
 	[SerializeField] float speed = 5;		//horizontal movement speed
 	[SerializeField] float jumpForce = 5;	//vertical jump force
-	[SerializeField] float jumpStayForce = 5;
+	[SerializeField] float jumpStayForce = 5;	//vertical positive force to enhance the jump force on each frame
 	float distToBottom;			//Distance where to check the ground from the center of collider
-	int layerMask;
+	int layerMask;				//layer mask of things you can jump from it 
 
 	Rigidbody2D rgbd;	//own
 	Collider2D col2d;	//own
-	KidHealth state;		//own
+	KidHealth health;	//own
 
 
 	void Start () {
@@ -28,14 +28,14 @@ public class KidMovement : MonoBehaviour {
 		 */
 		rgbd = GetComponent<Rigidbody2D> ();
 		col2d = GetComponent<Collider2D> ();
-		state = GetComponent<KidHealth> ();
+		health = GetComponent<KidHealth> ();
 		distToBottom = col2d.bounds.extents.y;
-		layerMask = (1 << 9) + 1;
+		layerMask = LayerMask.GetMask ("Decor", "Default", "Ennemy");
 	}
 
 
 	void FixedUpdate () {
-		if (state.Conscious) {
+		if (health.Conscious) {
 			Move (Input.GetAxisRaw ("Horizontal"));
 			if (Input.GetButton ("Jump")) {
 				
@@ -51,9 +51,10 @@ public class KidMovement : MonoBehaviour {
 	/*
 	 * The character is grounded checked on his right and left side
 	 */
-	bool isGrounded(){
+	public bool isGrounded(){
 		return ((bool)Physics2D.Raycast (transform.position + new Vector3 (0.4f,0,0), Vector2.down, distToBottom + 0.1f, layerMask) || 
-			(bool)Physics2D.Raycast (transform.position + new Vector3 (-0.4f,0,0), Vector2.down, distToBottom + 0.1f, layerMask));
+			(bool)Physics2D.Raycast (transform.position + new Vector3 (-0.4f,0,0), Vector2.down, distToBottom + 0.1f, layerMask) || 
+			(bool)Physics2D.Raycast (transform.position, Vector2.down, distToBottom + 0.1f, layerMask));
 	}
 
 	void Move(float force){

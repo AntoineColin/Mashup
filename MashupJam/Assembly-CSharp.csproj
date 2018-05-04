@@ -52,7 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BreakableHealth.cs" />
+     <Compile Include="Assets\Scripts\Capacities.cs" />
      <Compile Include="Assets\Scripts\DamagingZone.cs" />
+     <Compile Include="Assets\Scripts\EnnemyBehaviour\DumbEnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\EnnemyBehaviour\DumbFlyingEnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\EnnemyBehaviour\EnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\EnnemyBehaviour\WanderEnnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />
      <Compile Include="Assets\Scripts\KidAttack.cs" />
