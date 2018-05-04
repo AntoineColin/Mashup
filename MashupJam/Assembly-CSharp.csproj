@@ -51,18 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Behaviours\DumbEnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\DumbFlyingEnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\EnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\KidBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\LivingBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\WanderEnnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\BreakableHealth.cs" />
-     <Compile Include="Assets\Scripts\Capacities.cs" />
      <Compile Include="Assets\Scripts\DamagingZone.cs" />
-     <Compile Include="Assets\Scripts\EnnemyBehaviour\DumbEnnemyBehaviour.cs" />
-     <Compile Include="Assets\Scripts\EnnemyBehaviour\DumbFlyingEnnemyBehaviour.cs" />
-     <Compile Include="Assets\Scripts\EnnemyBehaviour\EnnemyBehaviour.cs" />
-     <Compile Include="Assets\Scripts\EnnemyBehaviour\WanderEnnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />
      <Compile Include="Assets\Scripts\KidAttack.cs" />
      <Compile Include="Assets\Scripts\KidHealth.cs" />
-     <Compile Include="Assets\Scripts\KidMovement.cs" />
      <Compile Include="Assets\Scripts\LivingHealth.cs" />
      <Compile Include="Assets\Scripts\Sign.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
