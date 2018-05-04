@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagingZone : MonoBehaviour {
-
+public class DamagingZone : MonoBehaviour
+{
 	[SerializeField] int damage = 15;
 
-	void OnCollisionEnter2D(Collision2D coll){
-		coll.gameObject.GetComponent<BreakableHealth> ().Hurt(damage);
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		BreakableHealth breakableHealth = coll.gameObject.GetComponent<BreakableHealth>();
+
+		if (breakableHealth != null)
+		{
+			breakableHealth.Hurt(damage);
+		}
 	}
 }

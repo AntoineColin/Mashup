@@ -7,52 +7,60 @@ using UnityEngine.Analytics;
 using System;
 using System.Reflection;
 
-public abstract class EnnemyBehaviour : LivingBehaviour {
+public abstract class EnnemyBehaviour : LivingBehaviour
+{
+	[SerializeField] protected float chaseDistance = 3;
 
-	[SerializeField]protected float chaseDistance = 3;
-		
-	void LateUpdate(){
-		state ();
+	void LateUpdate()
+	{
+		state();
 	}
-
 
 	/*
 	 * STATES
 	 */
 	#region states
-	public void Patrol(){
-		Wander (speed);
-		if (isNear (target, chaseDistance))
-			SetState (Kamikaze);
+	public void Patrol()
+	{
+		Wander(speed);
+		if (IsNear(target, chaseDistance))
+			SetState(Kamikaze);
 	}
 
-	public void Kamikaze(){
-		WalkDumbChase (target, speed);
+	public void Kamikaze()
+	{
+		WalkDumbChase(target, speed);
 
-		if (isFar (target, chaseDistance))
-			SetState (Patrol);
+		if (IsFar(target, chaseDistance))
+			SetState(Patrol);
 	}
 
-	public void FlyKamikaze(){
-		FlyDumbChase (target, speed);
+	public void FlyKamikaze()
+	{
+		FlyDumbChase(target, speed);
 	}
 
-	public void Fly(){
-		FlyRandom (speed);
-		if(isNear (target, chaseDistance)){
-			SetState (FlyKamikaze);
+	public void Fly()
+	{
+		FlyRandom(speed);
+		if (IsNear(target, chaseDistance))
+		{
+			SetState(FlyKamikaze);
 		}
 	}
 
-	public void FlyPrudent(){
-		FlyRandom (speed);
-		if(isNear (target, chaseDistance)){
-			SetState (FlyFlight);
+	public void FlyPrudent()
+	{
+		FlyRandom(speed);
+		if (IsNear(target, chaseDistance))
+		{
+			SetState(FlyFlight);
 		}
 	}
 
-	public void FlyFlight(){
-		
+	public void FlyFlight()
+	{
+
 	}
 
 	#endregion
