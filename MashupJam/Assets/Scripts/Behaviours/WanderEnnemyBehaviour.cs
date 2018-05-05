@@ -7,7 +7,12 @@ public class WanderEnnemyBehaviour : EnnemyBehaviour {
 
 
 	void Start(){
-		SetState (Patrol);
+		StatePush (WalkPatrol);
 	}
-	
+
+	void LateUpdate(){
+		if(IsNear (target, chaseDistance)){
+			StatePush (WalkKamikaze);
+		}
+	}
 }

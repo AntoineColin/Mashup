@@ -6,63 +6,52 @@ using System.Security;
 using UnityEngine.Analytics;
 using System;
 using System.Reflection;
+using UnityEditorInternal;
 
 public abstract class EnnemyBehaviour : LivingBehaviour
 {
 	[SerializeField] protected float chaseDistance = 3;
 
-	void LateUpdate()
-	{
-		state();
-	}
 
+	#region states
 	/*
 	 * STATES
 	 */
-	#region states
-	public void Patrol()
+	public void WalkPatrol()
 	{
 		Wander(speed);
-		if (IsNear(target, chaseDistance))
-			SetState(Kamikaze);
 	}
 
-	public void Kamikaze()
+	public void WalkKamikaze()
 	{
 		WalkDumbChase(target, speed);
 
 		if (IsFar(target, chaseDistance))
-			SetState(Patrol);
+			StatePop ();
 	}
 
 	public void FlyKamikaze()
 	{
 		FlyDumbChase(target, speed);
+		if (IsFar(target, chaseDistance))
+			StatePop ();
 	}
 
-	public void Fly()
+	public void FlyRandom()
 	{
 		FlyRandom(speed);
-		if (IsNear(target, chaseDistance))
-		{
-			SetState(FlyKamikaze);
-		}
 	}
 
-	public void FlyPrudent()
-	{
-		FlyRandom(speed);
-		if (IsNear(target, chaseDistance))
-		{
-			SetState(FlyFlight);
-		}
+	public void WalkFlight(){
+		Flight (target, speed);
+		if (IsFar (target, chaseDistance))
+			StatePop ();
 	}
-
-	public void FlyFlight()
-	{
-
-	}
+		
 
 	#endregion
 
+	void OnCollisionEnter2D(Collision2D coll){
+		Injure (coll.gameObject);
+	}
 }

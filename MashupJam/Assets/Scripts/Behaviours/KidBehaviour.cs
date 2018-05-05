@@ -8,7 +8,7 @@ public class KidBehaviour : LivingBehaviour
 	void Start()
 	{
 		activableLayer = LayerMask.GetMask("Interactable"); // String - slow, error prone.
-		ground = ground + LayerMask.GetMask("Ennemy"); // String - slow, error prone.
+		//ground = ground + LayerMask.GetMask("Ennemy"); // String - slow, error prone.
 	}
 
 	void LateUpdate()
@@ -18,7 +18,7 @@ public class KidBehaviour : LivingBehaviour
 			Walk(Input.GetAxisRaw("Horizontal") * speed);
 			if (Input.GetButton("Jump"))
 			{
-				if (IsGrounded())
+				if (grounded)
 				{
 					Jump(jumpForce);
 				}

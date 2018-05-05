@@ -15,4 +15,14 @@ public class DamagingZone : MonoBehaviour
 			breakableHealth.Hurt(damage);
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D coll){
+
+		BreakableHealth breakableHealth = coll.gameObject.GetComponent<BreakableHealth>();
+
+		if (breakableHealth != null)
+		{
+			breakableHealth.Hurt(damage);
+		}
+	}
 }

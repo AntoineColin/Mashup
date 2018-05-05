@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NUnit.Framework;
 
 public class LivingBehaviour : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LivingBehaviour : MonoBehaviour
 	protected Rigidbody2D rb2d;
 	protected Collider2D coll2d;
 	protected LivingHealth health;
+	protected Animator anim;
 
 	/*
 	 * RELATIVES
@@ -24,6 +26,7 @@ public class LivingBehaviour : MonoBehaviour
 	float distToBottom, distToRight, distToLeft;
 	protected float wanderSide = 1;
 	protected Vector2 direction;
+	protected bool grounded;
 
 	/*
 	 * PROPERTIES
@@ -31,15 +34,17 @@ public class LivingBehaviour : MonoBehaviour
 	[SerializeField] protected float speed;
 	[SerializeField] protected float jumpForce;
 	[SerializeField] protected float jumpStayForce;
+	[SerializeField] protected int damage;
+	[SerializeField] protected string ennemyTag;
 
-
-	protected Action state;
+	protected List<Action> state = new List<Action>();
 
 	void Awake()
 	{
 		rb2d = GetComponent<Rigidbody2D>();
 		coll2d = GetComponent<Collider2D>();
 		health = GetComponent<LivingHealth>();
+		anim = GetComponent<Animator> ();
 
 		distToBottom = coll2d.bounds.extents.y;
 		distToRight = coll2d.bounds.extents.x;
@@ -48,15 +53,41 @@ public class LivingBehaviour : MonoBehaviour
 		InvokeRepeating("RandomDirection", 0.2f, 0.4f);
 	}
 
+	void Update(){
+		IsGrounded ();
+		if (anim != null) {
+			anim.SetBool ("inAir", !grounded);
+			if (direction.x != 0)
+				anim.SetBool ("moving", true);
+			else
+				anim.SetBool ("moving", false);
+			anim.SetFloat ("direction", direction.x);
+		}
 
+		//Trigger the AI behaviour
+		if (state.Count != 0) {
+			state [state.Count-1] ();
+		}
+	}
 
 	#region states
-	public void SetState(Action s)
+	public Action GetState(){
+		if (state.Count == 0)
+			return null;
+		else
+			return state [state.Count - 1];
+	}
+
+	public void StatePush(Action s)
 	{
-		state = s;
+		if (s != GetState ())
+			state.Add (s);
+	}
+
+	public void StatePop(){
+		state.RemoveAt (state.Count-1);
 	}
 	#endregion
-
 
 
 	#region tests
@@ -65,9 +96,10 @@ public class LivingBehaviour : MonoBehaviour
 	 */
 	public bool IsGrounded()
 	{
-		return Physics2D.Raycast(transform.position + new Vector3(distToRight - 0.1f, 0, 0), Vector2.down, distToBottom + 0.1f, ground) ||
-			Physics2D.Raycast(transform.position + new Vector3(distToLeft + 0.1f, 0, 0), Vector2.down, distToBottom + 0.1f, ground) ||
-			Physics2D.Raycast(transform.position, Vector2.down, distToBottom + 0.1f, ground);
+		grounded = Physics2D.Raycast (transform.position + new Vector3 (distToRight - 0.1f, 0, 0), Vector2.down, distToBottom + 0.1f, ground) ||
+				Physics2D.Raycast (transform.position + new Vector3 (distToLeft + 0.1f, 0, 0), Vector2.down, distToBottom + 0.1f, ground) ||
+				Physics2D.Raycast (transform.position, Vector2.down, distToBottom + 0.1f, ground);
+		return grounded;
 	}
 
 	public bool IsNear(GameObject target, float nearLimit)
@@ -146,15 +178,19 @@ public class LivingBehaviour : MonoBehaviour
 		Debug.Log("Hi");
 	}
 
+	public void Waiting(){
+		
+	}
+
 	public void Walk(float speed)
 	{
+		direction.x = speed;
 		rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
 	}
 
 	public void Jump(float jumpHeight)
 	{
-		Debug.Log("JUMP");
-		if (IsGrounded())
+		if (grounded)
 			rb2d.velocity = new Vector2(rb2d.velocity.x, jumpHeight);
 	}
 
@@ -174,7 +210,8 @@ public class LivingBehaviour : MonoBehaviour
 
 	public void WalkDumbChase(GameObject target, float speedChase)
 	{
-		Walk(WhichHorizontalSide(target.transform.position) * speedChase);
+		wanderSide = WhichHorizontalSide (target.transform.position);
+		Walk(wanderSide * speedChase);
 		if (WhichVerticalSide(target.transform.position) > 0)
 		{
 			Jump(jumpForce);
@@ -197,9 +234,26 @@ public class LivingBehaviour : MonoBehaviour
 
 	public void RandomDirection()
 	{
-		Debug.Log("Random direction");
 		direction = UnityEngine.Random.insideUnitCircle;
 	}
+
+	public void Flight(GameObject target, float speed){
+		direction = transform.position - target.transform.position;
+		if(direction.x > 0){
+			wanderSide = 1;
+			Walk (speed);
+		}else{
+			wanderSide = -1;
+			Walk (-speed); 
+		}
+	}
+
+	public void Injure(GameObject target){
+		if(ennemyTag == target.tag)
+			target.GetComponent<BreakableHealth> ().Hurt (damage);
+	}
+
+
 
 	#endregion
 }

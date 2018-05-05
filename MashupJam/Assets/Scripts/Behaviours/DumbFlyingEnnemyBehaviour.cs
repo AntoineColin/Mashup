@@ -5,6 +5,12 @@ using UnityEngine;
 public class DumbFlyingEnnemyBehaviour : EnnemyBehaviour {
 
 	void Start(){
-		SetState (Fly);
+		StatePush (FlyRandom);
+	}
+
+	void LateUpdate(){
+		if (IsNear (target, chaseDistance)){
+			StatePush (FlyKamikaze);
+		}
 	}
 }

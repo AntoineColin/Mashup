@@ -6,6 +6,6 @@ public class DumbEnnemyBehaviour : EnnemyBehaviour {
 	
 	void Start(){
 		chaseDistance = -1;
-		SetState (Kamikaze);
+		StatePush (WalkKamikaze);
 	}
 }
