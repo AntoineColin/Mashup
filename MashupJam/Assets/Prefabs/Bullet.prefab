@@ -101,6 +101,8 @@ MonoBehaviour:
   damage: 20
   ennemyTag: Player
   ammo: {fileID: 0}
+  cooldown: 40
+  secondToDie: 4
 --- !u!212 &212462372009096438
 SpriteRenderer:
   m_ObjectHideFlags: 1

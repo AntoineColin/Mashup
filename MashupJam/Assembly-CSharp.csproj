@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Behaviours\DumbEnnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\DumbFlyingEnnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\EnnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\FlyingThrowerBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\KidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\LivingBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\ProjectileBehaviour.cs" />

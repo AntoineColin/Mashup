@@ -237,6 +237,13 @@ public abstract class LivingBehaviour : MonoBehaviour
 		Walk(walkSpeed * facing);
 	}
 
+	public void Prowl(GameObject target, float limitChase){
+		if(!IsAlignVertical (target.transform.position, limitChase)){
+			facing = WhichHorizontalSide (target.transform.position);
+		}
+		rb2d.velocity = new Vector2 (facing, 0) * speed;
+	}
+
 	public void FlyRandom(float speed)
 	{
 
@@ -266,6 +273,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 	}
 
 	public void Shoot(GameObject ammo, Vector2 startForce){
+		Debug.Log (currentCooldown);
 		if (currentCooldown <= 0) {
 			currentCooldown = cooldown;
 			GameObject shot = Instantiate (ammo, transform.position, Quaternion.identity);

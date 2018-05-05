@@ -33,6 +33,12 @@ public abstract class EnnemyBehaviour : LivingBehaviour
 			StatePop ();
 	}
 
+	public void WalkFlight(){
+		Flight (target, speed);
+		if (IsFar (target, chaseDistance))
+			StatePop ();
+	}
+
 	public void FlyKamikaze()
 	{
 		FlyDumbChase(target, speed);
@@ -45,10 +51,8 @@ public abstract class EnnemyBehaviour : LivingBehaviour
 		FlyRandom(speed);
 	}
 
-	public void WalkFlight(){
-		Flight (target, speed);
-		if (IsFar (target, chaseDistance))
-			StatePop ();
+	public void FlyProwl(){
+		Prowl (target, 9);
 	}
 		
 
