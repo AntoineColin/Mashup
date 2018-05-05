@@ -64,7 +64,6 @@
      <Compile Include="Assets\Scripts\DamagingZone.cs" />
      <Compile Include="Assets\Scripts\EnnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />
-     <Compile Include="Assets\Scripts\KidAttack.cs" />
      <Compile Include="Assets\Scripts\KidHealth.cs" />
      <Compile Include="Assets\Scripts\LivingHealth.cs" />
      <Compile Include="Assets\Scripts\Sign.cs" />

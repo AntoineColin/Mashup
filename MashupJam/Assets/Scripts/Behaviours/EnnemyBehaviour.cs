@@ -12,6 +12,9 @@ public abstract class EnnemyBehaviour : LivingBehaviour
 {
 	[SerializeField] protected float chaseDistance = 3;
 
+	protected override void Starting (){
+		ennemyTag = "Player";
+	}
 
 	#region states
 	/*

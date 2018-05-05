@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using NUnit.Framework;
 
-public class LivingBehaviour : MonoBehaviour
+public abstract class LivingBehaviour : MonoBehaviour
 {
 	/*
 	 * COMPONENTS
@@ -24,18 +24,21 @@ public class LivingBehaviour : MonoBehaviour
 	 * CONDITION
 	 */
 	float distToBottom, distToRight, distToLeft;
-	protected float wanderSide = 1;
+	protected float facing = 1;
 	protected Vector2 direction;
 	protected bool grounded;
+	protected int currentCooldown;
 
 	/*
 	 * PROPERTIES
 	 */
-	[SerializeField] protected float speed;
-	[SerializeField] protected float jumpForce;
-	[SerializeField] protected float jumpStayForce;
-	[SerializeField] protected int damage;
-	[SerializeField] protected string ennemyTag;
+	[SerializeField] protected float speed = 2;
+	[SerializeField] protected float jumpForce = 2;
+	[SerializeField] protected float jumpStayForce = 4;
+	[SerializeField] protected int damage = 5;
+	[SerializeField] protected string ennemyTag = "Player";
+	[SerializeField] protected GameObject ammo;
+	[SerializeField] protected int cooldown = 40;
 
 	protected List<Action> state = new List<Action>();
 
@@ -51,7 +54,13 @@ public class LivingBehaviour : MonoBehaviour
 		distToLeft = -distToRight;
 		target = GameObject.Find("Player");
 		InvokeRepeating("RandomDirection", 0.2f, 0.4f);
+
+		currentCooldown = cooldown;
+
+		Starting ();
 	}
+
+	protected abstract void Starting ();
 
 	void Update(){
 		IsGrounded ();
@@ -68,6 +77,8 @@ public class LivingBehaviour : MonoBehaviour
 		if (state.Count != 0) {
 			state [state.Count-1] ();
 		}
+
+		currentCooldown--;
 	}
 
 	#region states
@@ -210,8 +221,8 @@ public class LivingBehaviour : MonoBehaviour
 
 	public void WalkDumbChase(GameObject target, float speedChase)
 	{
-		wanderSide = WhichHorizontalSide (target.transform.position);
-		Walk(wanderSide * speedChase);
+		facing = WhichHorizontalSide (target.transform.position);
+		Walk(facing * speedChase);
 		if (WhichVerticalSide(target.transform.position) > 0)
 		{
 			Jump(jumpForce);
@@ -221,9 +232,9 @@ public class LivingBehaviour : MonoBehaviour
 	public void Wander(float walkSpeed)
 	{
 		if (IsOnBorder())
-			wanderSide = -wanderSide;
+			facing = -facing;
 
-		Walk(walkSpeed * wanderSide);
+		Walk(walkSpeed * facing);
 	}
 
 	public void FlyRandom(float speed)
@@ -240,20 +251,34 @@ public class LivingBehaviour : MonoBehaviour
 	public void Flight(GameObject target, float speed){
 		direction = transform.position - target.transform.position;
 		if(direction.x > 0){
-			wanderSide = 1;
+			facing = 1;
 			Walk (speed);
 		}else{
-			wanderSide = -1;
+			facing = -1;
 			Walk (-speed); 
 		}
 	}
 
 	public void Injure(GameObject target){
-		if(ennemyTag == target.tag)
+		if (ennemyTag == target.tag) {
 			target.GetComponent<BreakableHealth> ().Hurt (damage);
+		}
 	}
 
-
+	public void Shoot(GameObject ammo, Vector2 startForce){
+		if (currentCooldown <= 0) {
+			currentCooldown = cooldown;
+			GameObject shot = Instantiate (ammo, transform.position, Quaternion.identity);
+			if (ennemyTag == "Player") {
+			
+				shot.layer = LayerMask.NameToLayer ("BadBullet");
+			} else {
+				shot.layer = LayerMask.NameToLayer ("GoodBullet");
+			}
+			shot.GetComponent<LivingBehaviour> ().ennemyTag = ennemyTag;
+			shot.GetComponent<Rigidbody2D> ().AddForce (startForce * 2, ForceMode2D.Impulse);
+		}
+	}
 
 	#endregion
 }

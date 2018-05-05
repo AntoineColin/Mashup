@@ -20,9 +20,9 @@ TagManager:
   - Interactable
   - Ghost
   - Ennemy
+  - BadBullet
+  - GoodBullet
   - Meta
-  - 
-  - 
   - 
   - 
   - 

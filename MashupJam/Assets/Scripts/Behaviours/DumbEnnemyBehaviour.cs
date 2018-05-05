@@ -8,4 +8,5 @@ public class DumbEnnemyBehaviour : EnnemyBehaviour {
 		chaseDistance = -1;
 		StatePush (WalkKamikaze);
 	}
+		
 }

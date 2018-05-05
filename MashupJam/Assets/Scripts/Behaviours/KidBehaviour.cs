@@ -5,17 +5,19 @@ public class KidBehaviour : LivingBehaviour
 	[SerializeField] float interactReach = 0.5f;
 	[SerializeField] private LayerMask activableLayer;
 
-	void Start()
-	{
+	protected override void Starting ()	{
 		activableLayer = LayerMask.GetMask("Interactable"); // String - slow, error prone.
-		//ground = ground + LayerMask.GetMask("Ennemy"); // String - slow, error prone.
+		ennemyTag = "Ennemy";
 	}
 
 	void LateUpdate()
 	{
 		if (health.Conscious)
 		{
-			Walk(Input.GetAxisRaw("Horizontal") * speed);
+			var moveInput = Input.GetAxisRaw ("Horizontal");
+			if (moveInput != 0)
+				facing = moveInput;
+			Walk(moveInput * speed);
 			if (Input.GetButton("Jump"))
 			{
 				if (grounded)
@@ -27,7 +29,11 @@ public class KidBehaviour : LivingBehaviour
 					JumpLonger(jumpStayForce);
 				}
 			}
+			if(Input.GetButton ("Fire1")){
+				Shoot (ammo, new Vector2(facing * 4, 0));
+			}
 		}
+
 	}
 
 	void Interact()
