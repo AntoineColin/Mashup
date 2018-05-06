@@ -25,7 +25,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 	 */
 	float distToBottom, distToRight, distToLeft;
 	protected float facing = 1;
-	protected Vector2 direction;
+	protected Vector2 direction, randDirection;
 	protected bool grounded;
 	protected int currentCooldown;
 
@@ -222,6 +222,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 	public void WalkDumbChase(GameObject target, float speedChase)
 	{
 		facing = WhichHorizontalSide (target.transform.position);
+		Debug.Log (facing + " / " + speedChase);
 		Walk(facing * speedChase);
 		if (WhichVerticalSide(target.transform.position) > 0)
 		{
@@ -238,21 +239,25 @@ public abstract class LivingBehaviour : MonoBehaviour
 	}
 
 	public void Prowl(GameObject target, float limitChase){
+		float upDown = 0;
+		if (!IsAlignHorizontal (target.transform.position + new Vector3 (0, limitChase), 4))
+			upDown = WhichVerticalSide (target.transform.position + new Vector3 (0, 4));
 		if(!IsAlignVertical (target.transform.position, limitChase)){
 			facing = WhichHorizontalSide (target.transform.position);
 		}
-		rb2d.velocity = new Vector2 (facing, 0) * speed;
+		direction = new Vector2 (facing, 0) * (speed + randDirection.y);
+		rb2d.velocity = direction;
 	}
 
 	public void FlyRandom(float speed)
 	{
-
+		direction = randDirection;
 		rb2d.velocity = direction * speed;
 	}
 
 	public void RandomDirection()
 	{
-		direction = UnityEngine.Random.insideUnitCircle;
+		randDirection = UnityEngine.Random.insideUnitCircle;
 	}
 
 	public void Flight(GameObject target, float speed){
@@ -273,7 +278,6 @@ public abstract class LivingBehaviour : MonoBehaviour
 	}
 
 	public void Shoot(GameObject ammo, Vector2 startForce){
-		Debug.Log (currentCooldown);
 		if (currentCooldown <= 0) {
 			currentCooldown = cooldown;
 			GameObject shot = Instantiate (ammo, transform.position, Quaternion.identity);

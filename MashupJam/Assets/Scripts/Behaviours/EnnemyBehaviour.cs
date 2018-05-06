@@ -52,7 +52,7 @@ public abstract class EnnemyBehaviour : LivingBehaviour
 	}
 
 	public void FlyProwl(){
-		Prowl (target, 9);
+		Prowl (target, 6 + randDirection.x * 2);
 	}
 		
 

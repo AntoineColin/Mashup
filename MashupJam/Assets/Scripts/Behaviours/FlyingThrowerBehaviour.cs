@@ -13,6 +13,6 @@ public class FlyingThrowerBehaviour : EnnemyBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		if(IsAlignVertical (target.transform.position, 0.1f))
-			Shoot (ammo, Vector2.down);
+			Shoot (ammo, Vector2.zero);
 	}
 }
