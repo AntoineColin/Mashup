@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.ComponentModel;
 
 public class KidBehaviour : LivingBehaviour
 {
@@ -8,6 +10,7 @@ public class KidBehaviour : LivingBehaviour
 	protected override void Starting ()	{
 		activableLayer = LayerMask.GetMask("Interactable"); // String - slow, error prone.
 		ennemyTag = "Ennemy";
+		ammo.SetActive (false);
 	}
 
 	void LateUpdate()
@@ -30,10 +33,21 @@ public class KidBehaviour : LivingBehaviour
 				}
 			}
 			if(Input.GetButton ("Fire1")){
-				Shoot (ammo, new Vector2(facing * 4, 0));
+				//Shoot (ammo, new Vector2(facing * 4, 0));
+				StartCoroutine (Melee ());
 			}
 		}
 
+	}
+
+	public IEnumerator Melee(){
+		if(currentCooldown <= 0){
+			currentCooldown = cooldown;
+			anim.SetBool ("facingLeft", facing == 1);
+			anim.SetBool ("attacking", true);
+			yield return new WaitForSeconds (0.1f);
+			anim.SetBool ("attacking", false);
+		}
 	}
 
 	void Interact()
@@ -45,4 +59,11 @@ public class KidBehaviour : LivingBehaviour
 			res.GetComponent<Interactable>().Interact();
 		}
 	}
+
+	void OnTriggerStay2D(Collider2D coll){
+		if(coll.gameObject.tag == ennemyTag){
+			Injure (coll.gameObject);
+		}
+	}
+		
 }

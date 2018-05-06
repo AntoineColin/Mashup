@@ -56,7 +56,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 		InvokeRepeating("RandomDirection", 0.2f, 0.4f);
 
 		currentCooldown = cooldown;
-
+		facing = 1;
 		Starting ();
 	}
 
@@ -291,6 +291,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 			shot.GetComponent<Rigidbody2D> ().AddForce (startForce * 2, ForceMode2D.Impulse);
 		}
 	}
+		
 
 	#endregion
 }
