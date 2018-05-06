@@ -42,8 +42,24 @@ public class BreakableHealth : MonoBehaviour {
 
 	protected IEnumerator Unbeat(float time){
 		beatable = false;
+		StartCoroutine (Rainbowing ());
 		yield return new WaitForSeconds (time);
 		beatable = true;
+	}
 
+	protected IEnumerator Rainbowing(){
+		SpriteRenderer sr = GetComponent<SpriteRenderer> ();
+		bool shiftIndicator = true;
+		while(!beatable){
+			if(shiftIndicator == true){
+				sr.color = new Color (1, 1, 1, 1);
+				shiftIndicator = false;
+			}else{
+				sr.color = new Color (1, 1, 1, 0.3f);
+				shiftIndicator = true;
+			}
+			yield return new WaitForSeconds (0.05f);
+			sr.color = new Color (1, 1, 1, 1);
+		}
 	}
 }

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  timeUnbeats: 0
+  timeUnbeats: 10
   timeToDie: 0
   maxlife: 10
   shield: 0
