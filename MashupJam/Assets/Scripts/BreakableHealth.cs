@@ -49,17 +49,18 @@ public class BreakableHealth : MonoBehaviour {
 
 	protected IEnumerator Rainbowing(){
 		SpriteRenderer sr = GetComponent<SpriteRenderer> ();
+		Color natural = sr.color;
 		bool shiftIndicator = true;
 		while(!beatable){
 			if(shiftIndicator == true){
-				sr.color = new Color (1, 1, 1, 1);
+				sr.color = natural;
 				shiftIndicator = false;
 			}else{
 				sr.color = new Color (1, 1, 1, 0.3f);
 				shiftIndicator = true;
 			}
 			yield return new WaitForSeconds (0.05f);
-			sr.color = new Color (1, 1, 1, 1);
+			sr.color = natural;
 		}
 	}
 }

@@ -114,10 +114,10 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 513
-  speed: 2
+  speed: 3
   jumpForce: 2
   jumpStayForce: 4
-  damage: 5
+  damage: 2
   ennemyTag: Player
   ammo: {fileID: 0}
   cooldown: 40
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  timeUnbeats: 0
+  timeUnbeats: 1
   timeToDie: 0
   maxlife: 15
   shield: 0

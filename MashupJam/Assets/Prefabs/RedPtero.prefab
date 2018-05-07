@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4347763812592070
 Transform:
   m_ObjectHideFlags: 1
@@ -114,14 +114,14 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 0
-  speed: 2
+  speed: 3.1
   jumpForce: 2
   jumpStayForce: 4
-  damage: 10
+  damage: 1
   ennemyTag: Player
   ammo: {fileID: 0}
   cooldown: 40
-  chaseDistance: 3
+  chaseDistance: 5
 --- !u!114 &114952853503199338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  timeUnbeats: 0
+  timeUnbeats: 1
   timeToDie: 0
   maxlife: 10
   shield: 0

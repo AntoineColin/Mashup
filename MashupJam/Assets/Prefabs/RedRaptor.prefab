@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4548949784220100
 Transform:
   m_ObjectHideFlags: 1
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616893834789294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6727009, y: -1.7993875, z: 0}
+  m_LocalPosition: {x: -5.19, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  timeUnbeats: 0
+  timeUnbeats: 1
   timeToDie: 0
   maxlife: 15
   shield: 0
@@ -131,10 +131,10 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 513
-  speed: 1.5
+  speed: 3
   jumpForce: 4
   jumpStayForce: 0
-  damage: 10
+  damage: 2
   ennemyTag: 
   ammo: {fileID: 0}
   cooldown: 40

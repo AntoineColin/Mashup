@@ -277,7 +277,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 		}
 	}
 
-	public void Shoot(GameObject ammo, Vector2 startForce){
+	public void Shoot(GameObject ammo, Vector2 startForce,int ammoDamage){
 		if (currentCooldown <= 0) {
 			currentCooldown = cooldown;
 			GameObject shot = Instantiate (ammo, transform.position, Quaternion.identity);
@@ -287,7 +287,9 @@ public abstract class LivingBehaviour : MonoBehaviour
 			} else {
 				shot.layer = LayerMask.NameToLayer ("GoodBullet");
 			}
-			shot.GetComponent<LivingBehaviour> ().ennemyTag = ennemyTag;
+			LivingBehaviour living = shot.GetComponent<LivingBehaviour> ();
+			living.ennemyTag = ennemyTag;
+			living.damage = ammoDamage;
 			shot.GetComponent<Rigidbody2D> ().AddForce (startForce * 2, ForceMode2D.Impulse);
 		}
 	}
