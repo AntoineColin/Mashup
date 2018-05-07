@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 456def2c48c175540a5d5d02155e2d7c
+timeCreated: 1522859780
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Blockstar
+  fontNames:
+  - Blockstar
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

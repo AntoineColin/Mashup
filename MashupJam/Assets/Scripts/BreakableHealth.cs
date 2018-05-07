@@ -3,39 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using System.Net;
+using UnityEngine.SceneManagement;
 
 public class BreakableHealth : MonoBehaviour {
 
 
-	[SerializeField]protected int life;	//lifepoints
-	[SerializeField]protected float timeUnbeats;
-	[SerializeField]protected float timeToDie;
-	protected bool beatable = true;
+    [SerializeField] protected int life;    //lifepoints
+    [SerializeField] protected float timeUnbeats;
+    [SerializeField] protected float timeToDie;
+    protected bool beatable = true;
 
 
-	public virtual void Hurt(){
-		Hurt (1);
-	}
+    public virtual void Hurt() {
+        Hurt(1);
+    }
 
-	public virtual void Hurt(int damage){
-		Debug.Log ("Hurt a breakable for " + damage);
-		if(beatable){
-			life -= damage;
-			if(life<=0){
-				Die ();
-			}
-			StartCoroutine(Unbeat(timeUnbeats));
-		}
-	}
+    public virtual void Hurt(int damage) {
+        Debug.Log("Hurt a breakable for " + damage);
+        if (beatable) {
+            life -= damage;
+            if (life <= 0) {
+                Die();
+                Lose();
 
-	protected void Die(){
+            }
+            StartCoroutine(Unbeat(timeUnbeats));
+        }
+    }
+
+    private void Lose()
+    {
+        SceneManager.LoadSceneAsync("Lose", LoadSceneMode.Single);
+    }
+            
+    public void Lose(string Lose)
+    {
+        Debug.Log("Load scene requested for:" + Lose);
+        SceneManager.LoadSceneAsync(Lose, LoadSceneMode.Single);
+    }
+    protected void Die(){
 		Debug.Log ("die");
 		StartCoroutine (Disappear(timeToDie));
-
+       
 	}
-
-	protected IEnumerator Disappear(float timeToDie){
+    
+    protected IEnumerator Disappear(float timeToDie){
 		yield return new WaitForSeconds (timeToDie);
+		Debug.Log ("mort");
 		Destroy (gameObject);
 	}
 
