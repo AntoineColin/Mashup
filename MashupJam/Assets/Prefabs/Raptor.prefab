@@ -115,8 +115,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 513
   speed: 3
-  jumpForce: 2
-  jumpStayForce: 4
+  jumpForce: 4
+  jumpStayForce: 0
   damage: 2
   ennemyTag: Player
   ammo: {fileID: 0}

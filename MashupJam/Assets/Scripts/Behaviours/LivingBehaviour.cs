@@ -222,7 +222,6 @@ public abstract class LivingBehaviour : MonoBehaviour
 	public void WalkDumbChase(GameObject target, float speedChase)
 	{
 		facing = WhichHorizontalSide (target.transform.position);
-		Debug.Log (facing + " / " + speedChase);
 		Walk(facing * speedChase);
 		if (WhichVerticalSide(target.transform.position) > 0)
 		{

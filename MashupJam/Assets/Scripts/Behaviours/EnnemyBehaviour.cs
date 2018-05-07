@@ -58,7 +58,7 @@ public abstract class EnnemyBehaviour : LivingBehaviour
 
 	#endregion
 
-	void OnCollisionEnter2D(Collision2D coll){
+	void OnCollisionStay2D(Collision2D coll){
 		Injure (coll.gameObject);
 	}
 }

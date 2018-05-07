@@ -36,7 +36,6 @@ public class BreakableHealth : MonoBehaviour {
 
 	protected IEnumerator Disappear(float timeToDie){
 		yield return new WaitForSeconds (timeToDie);
-		Debug.Log ("mort");
 		Destroy (gameObject);
 	}
 

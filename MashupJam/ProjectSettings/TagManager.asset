@@ -40,6 +40,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1789527361
+    locked: 0
+  - name: Elements
+    uniqueID: 2646418171
+    locked: 0
+  - name: Overwall
+    uniqueID: 445462229
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Barriers
+    uniqueID: 47716955
     locked: 0
