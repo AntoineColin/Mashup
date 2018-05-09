@@ -59,6 +59,7 @@ public abstract class EnnemyBehaviour : LivingBehaviour
 	#endregion
 
 	void OnCollisionStay2D(Collision2D coll){
+		Debug.Log ("pof");
 		Injure (coll.gameObject);
 	}
 }

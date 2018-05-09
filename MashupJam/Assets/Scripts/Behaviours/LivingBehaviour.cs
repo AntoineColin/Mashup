@@ -273,6 +273,7 @@ public abstract class LivingBehaviour : MonoBehaviour
 	public void Injure(GameObject target){
 		if (ennemyTag == target.tag) {
 			target.GetComponent<BreakableHealth> ().Hurt (damage);
+			target.GetComponent<Rigidbody2D> ().AddForce ((target.transform.position - transform.position).normalized * 180);
 		}
 	}
 

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class BreakableHealth : MonoBehaviour {
 
+	public delegate void OnDeath();
 
     [SerializeField] protected int life;    //lifepoints
     [SerializeField] protected float timeUnbeats;
@@ -24,32 +25,18 @@ public class BreakableHealth : MonoBehaviour {
             life -= damage;
             if (life <= 0) {
                 Die();
-                Lose();
-
             }
             StartCoroutine(Unbeat(timeUnbeats));
         }
     }
 
-    private void Lose()
-    {
-        SceneManager.LoadSceneAsync("Lose", LoadSceneMode.Single);
-    }
-            
-    public void Lose(string Lose)
-    {
-        Debug.Log("Load scene requested for:" + Lose);
-        SceneManager.LoadSceneAsync(Lose, LoadSceneMode.Single);
-    }
     protected void Die(){
 		Debug.Log ("die");
 		StartCoroutine (Disappear(timeToDie));
-       
 	}
     
-    protected IEnumerator Disappear(float timeToDie){
+	protected virtual IEnumerator Disappear(float timeToDie){
 		yield return new WaitForSeconds (timeToDie);
-		Debug.Log ("mort");
 		Destroy (gameObject);
 	}
 

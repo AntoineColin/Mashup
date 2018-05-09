@@ -43,7 +43,7 @@ namespace Fungus
         protected float startStoryTextWidth; 
         protected float startStoryTextInset;
 
-        protected WriterAudio writerAudio;
+        protected WriterAudio WriterAudio;
         protected Writer writer;
         protected CanvasGroup canvasGroup;
 
@@ -108,18 +108,18 @@ namespace Fungus
 
         protected virtual WriterAudio GetWriterAudio()
         {
-            if (writerAudio != null)
+            if (WriterAudio != null)
             {
-                return writerAudio;
+                return WriterAudio;
             }
             
-            writerAudio = GetComponent<WriterAudio>();
-            if (writerAudio == null)
+            WriterAudio = GetComponent<WriterAudio>();
+            if (WriterAudio == null)
             {
-                writerAudio = gameObject.AddComponent<WriterAudio>();
+                WriterAudio = gameObject.AddComponent<WriterAudio>();
             }
             
-            return writerAudio;
+            return WriterAudio;
         }
 
         protected virtual void Start()
@@ -483,7 +483,7 @@ namespace Fungus
                 soundEffectClip = speakingCharacter.SoundEffect;
             }
 
-            writer.AttachedWriterAudio = writerAudio;
+            writer.AttachedWriterAudio = WriterAudio;
 
             yield return StartCoroutine(writer.Write(text, clearPrevious, waitForInput, stopVoiceover, waitForVO, soundEffectClip, onComplete));
         }
