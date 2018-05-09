@@ -13,9 +13,9 @@ public class LevelManager : MonoBehaviour{
 		KidHealth.OnKidDeath -= Lose;
 	}
 
-    public void LoadLevel(string CutScene)
+    public void LoadLevel(string Introduction)
     {
-        SceneManager.LoadScene(CutScene, LoadSceneMode.Single);
+        SceneManager.LoadScene(Introduction, LoadSceneMode.Single);
     }
 
     public void QuitRequest(string name)

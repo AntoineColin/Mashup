@@ -361,11 +361,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1187886512}
-  selectedCommands:
-  - {fileID: 1187886534}
-  - {fileID: 0}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -390,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   indentLevel: 0
-  storyText: I imagine you know how to play games?
+  storyText: I imagine you know how to play my games?
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -447,7 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   indentLevel: 0
-  storyText: You are back to play in my arcade room, kid?
+  storyText: I see you are back to play in my arcade room, ay kid?
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -567,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
+    x: 68
     y: 141
     width: 122
     height: 40
@@ -636,7 +633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 14
   indentLevel: 0
-  storyText: because you come each day, I thought you could be interested by this.
+  storyText: because you come and visit me each day, I thought you might be interested
+    in this...
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -860,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 17
   indentLevel: 0
-  storyText: I 've forgotten, you don't know what it is. It's ...
+  storyText: what you say, you don't know what this is. It's ...
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -972,7 +970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 22
   indentLevel: 0
-  storyText: Oups
+  storyText: Oops
   description: 
   character: {fileID: 740332787}
   portrait: {fileID: 0}
@@ -998,7 +996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 25
   indentLevel: 0
-  storyText: It's dangerous to go alone ! Take this.
+  storyText: Woa! Hang on! It's dangerous!! Take this.
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -1024,7 +1022,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 26
   indentLevel: 0
-  storyText: You should help me to find where the housing go, the stick is still here.
+  storyText: You should help me to find where the housing dissappeared to, funnily
+    enough the stick is still here!
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -1050,8 +1049,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 24
   indentLevel: 0
-  storyText: Harrr! Are you okay kid? The remote broke and who know what can happen
-    now. I think something happend. Could you check outside?
+  storyText: Harrr! Are you okay kid? The remote broke and who knows what will happen
+    now. I heard something outside. Could you go check?
   description: 
   character: {fileID: 349716180}
   portrait: {fileID: 0}
@@ -1133,7 +1132,7 @@ MonoBehaviour:
     floatVal: 10000
 --- !u!114 &1187886534
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187886501}
