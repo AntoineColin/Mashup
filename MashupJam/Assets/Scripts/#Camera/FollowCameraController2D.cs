@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.Build.AssetBundle;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -16,6 +18,18 @@ namespace GameJam.Core
 
 		[Range(0f, 20f)]
 		[SerializeField] private float _smoothingFactor = 5f;
+
+		void OnEnable(){
+			SceneManager.sceneLoaded += AttributeCam;
+		}
+
+		void OnDisable(){
+			SceneManager.sceneLoaded -= AttributeCam;
+		}
+
+		public void AttributeCam(Scene hop, LoadSceneMode hip){
+			_target = GameObject.Find ("Player").transform;
+		}
 
 		public void FixedUpdate()
 		{

@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour{
 
+	private int ennemyNb;
+
 	void OnEnable(){
 		KidHealth.OnKidDeath += Lose;
+		EnnemyHealth.OnEnnemyDeath += Win;
 	}
 
 	void OnDisable(){
 		KidHealth.OnKidDeath -= Lose;
+		EnnemyHealth.OnEnnemyDeath -= Win;
 	}
 
     public void LoadLevel(string Introduction)
@@ -23,24 +27,23 @@ public class LevelManager : MonoBehaviour{
         Application.Quit();
     }
 
-    public void ReturnToStart(string Start)
-    {
-        SceneManager.LoadScene(Start, LoadSceneMode.Single);
-    }
-
-    public void Win(string Win)
-    {
-        SceneManager.LoadScene(Win, LoadSceneMode.Single);
-    }
-
-   
-    public void TestScene(string TestScene)
-    {
-        SceneManager.LoadScene(TestScene, LoadSceneMode.Single);
-    }
+	public int GenerateLevel(int difficulty){
+		int EnnemyNumber = 0;
+		return EnnemyNumber;
+	}
 
 	public void Lose(){
 		Debug.Log ("Lose");
-		ReturnToStart ("Start");
+		GameObject.Destroy (GameObject.Find ("Player"));
+		LoadLevel ("Start");
+	}
+
+	public void Win(){
+		ennemyNb--;
+		Debug.Log ("ennemies remaining : " + ennemyNb);
+		if (ennemyNb <= 0) {
+			Debug.Log ("Win");
+			LoadLevel ("Map");
+		}
 	}
 }

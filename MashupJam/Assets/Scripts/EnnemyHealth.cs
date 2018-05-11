@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class EnnemyHealth : LivingHealth {
 
+	public static event OnDeath OnEnnemyDeath;
 
+	protected override void Die ()
+	{
+		OnEnnemyDeath ();
+		base.Die ();
+	}
 }

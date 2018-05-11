@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose.unity
     guid: f735f4a47bfe8894b997c770491f1487
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 68fb7e0c087bdf648871bc328ad7e1c0

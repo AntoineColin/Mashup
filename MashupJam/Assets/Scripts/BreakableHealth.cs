@@ -30,7 +30,7 @@ public class BreakableHealth : MonoBehaviour {
         }
     }
 
-    protected void Die(){
+	protected virtual void Die(){
 		Debug.Log ("die");
 		StartCoroutine (Disappear(timeToDie));
 	}
