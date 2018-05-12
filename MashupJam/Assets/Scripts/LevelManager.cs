@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour{
 
 	public int GenerateLevel(int difficulty){
 		int EnnemyNumber = 0;
+
 		return EnnemyNumber;
 	}
 

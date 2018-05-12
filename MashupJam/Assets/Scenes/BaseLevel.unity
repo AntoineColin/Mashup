@@ -146,6 +146,16 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
+--- !u!1839735485 &147299103 stripped
+Tilemap:
+  m_PrefabParentObject: {fileID: 8195094282801725974, guid: 5f07074dda0a7fa45b6c609c2e847789,
+    type: 2}
+  m_PrefabInternal: {fileID: 472225687}
+--- !u!1839735485 &294615595 stripped
+Tilemap:
+  m_PrefabParentObject: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
+    type: 2}
+  m_PrefabInternal: {fileID: 472225687}
 --- !u!1001 &346221049
 Prefab:
   m_ObjectHideFlags: 0
@@ -243,8 +253,16 @@ Prefab:
       objectReference: {fileID: 101382306}
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
-      propertyPath: m_TileSpriteArray.Array.data[1].m_Data
+      propertyPath: m_TileSpriteArray.Array.data[2].m_Data
       value: 
+      objectReference: {fileID: 1250184913}
+    - target: {fileID: 1173643022476642, guid: 5f07074dda0a7fa45b6c609c2e847789, type: 2}
+      propertyPath: m_Name
+      value: OverPlatforms
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973528565908904, guid: 5f07074dda0a7fa45b6c609c2e847789, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
@@ -273,14 +291,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
-      propertyPath: m_TileSpriteArray.Array.data[2].m_RefCount
-      value: 2
+      propertyPath: m_TileSpriteArray.Array.data[1].m_Data
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
-      propertyPath: m_TileSpriteArray.Array.data[2].m_Data
-      value: 
-      objectReference: {fileID: 1250184913}
+      propertyPath: m_TileSpriteArray.Array.data[2].m_RefCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
       propertyPath: m_TileColorArray.Array.data[1].m_RefCount
@@ -289,7 +307,7 @@ Prefab:
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.r
-      value: 2.4364236e-33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195094281676565874, guid: 5f07074dda0a7fa45b6c609c2e847789,
         type: 2}
@@ -639,6 +657,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 905944938}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1839735485 &924410705 stripped
+Tilemap:
+  m_PrefabParentObject: {fileID: 8195094280630575662, guid: 5f07074dda0a7fa45b6c609c2e847789,
+    type: 2}
+  m_PrefabInternal: {fileID: 472225687}
 --- !u!1 &932953164
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +778,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1096632404}
+  - component: {fileID: 1096632405}
   m_Layer: 0
   m_Name: '-------Gameplay-------'
   m_TagString: Untagged
@@ -775,6 +799,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096632405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1096632403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c42dc5fb519c64cb2cc86b6f075f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 294615595}
+  overBackground: {fileID: 924410705}
+  platforms: {fileID: 147299103}
+  overPlatforms: {fileID: 2013011442}
+  palette: {fileID: 114859126099989920, guid: 48468668b1a31ce4cb8b4b831314ef79, type: 2}
 --- !u!1001 &1192254600
 Prefab:
   m_ObjectHideFlags: 0
@@ -968,7 +1008,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f0000000000000000000000000000003f0000003f000000000000000000000000000000bf000000bf0000000000000000000000000000003f000000bf000000000000000000000000
+      _typelessdata: 000000bf0000003f00000000000000000000803f0000003f0000003f000000000000803f0000803f000000bf000000bf0000000000000000000000000000003f000000bf000000000000803f00000000
     textureRect:
       serializedVersion: 2
       x: 0
@@ -1185,6 +1225,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1839735485 &2013011442 stripped
+Tilemap:
+  m_PrefabParentObject: {fileID: 8195094279842568118, guid: 5f07074dda0a7fa45b6c609c2e847789,
+    type: 2}
+  m_PrefabInternal: {fileID: 472225687}
 --- !u!1 &2098231013
 GameObject:
   m_ObjectHideFlags: 0
