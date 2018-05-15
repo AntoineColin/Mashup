@@ -1161,7 +1161,7 @@ MonoBehaviour:
       intValue: 0
       boolValue: 0
       floatValue: 0
-      stringValue: TestScene
+      stringValue: Start
       colorValue: {r: 0, g: 0, b: 0, a: 0}
       gameObjectValue: {fileID: 0}
       materialValue: {fileID: 0}

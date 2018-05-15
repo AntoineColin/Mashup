@@ -6,7 +6,6 @@ using System.Security;
 using UnityEngine.Analytics;
 using System;
 using System.Reflection;
-using UnityEditorInternal;
 
 public abstract class EnnemyBehaviour : LivingBehaviour
 {

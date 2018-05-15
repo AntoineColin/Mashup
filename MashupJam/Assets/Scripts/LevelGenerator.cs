@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEditor;
 
 public class LevelGenerator : MonoBehaviour {
 
 
 	public Tilemap background, overBackground, platforms, overPlatforms;
-	public GridPalette palette;
 
 	// Use this for initialization
 	void Start () {

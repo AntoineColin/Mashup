@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour{
 		Debug.Log ("ennemies remaining : " + ennemyNb);
 		if (ennemyNb <= 0) {
 			Debug.Log ("Win");
-			LoadLevel ("Map");
+			LoadLevel ("Start");
 		}
 	}
 }
